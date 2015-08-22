@@ -123,12 +123,12 @@ names(data_req)<-col_names
 ## calculating the average of each variable using summarise_each() of dplyr package
 ## pipe (%>%) is made use of to chain the relevant statements together.
 
-final_data_set<-select(data_req,-activity_no)%>%
+tidy_data_set<-select(data_req,-activity_no)%>%
         group_by(activity_name,subject_id)%>%
         summarise_each(funs(mean))
 
 
-write.table(final_data_set,file="Tidy_DataSet.txt",row.names = FALSE)
+write.table(tidy_data_set,file="Tidy_DataSet.txt",row.names = FALSE)
 
 ## To read the Tidy_DataSet.txt file created above into a variable tidy_data,
 ## use the below statement
