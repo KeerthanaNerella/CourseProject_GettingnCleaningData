@@ -3,36 +3,36 @@
 ## Reading column names for training and test data from features.txt file
 
 ## For this assignment, the features.txt file is placed at following path in working directory
-##     getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset
+##     project/
 
-col_names<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/features.txt")
+col_names<-read.table("project/features.txt")
 col_names<-as.character(col_names$V2)
 
 
 
 ## For this assignment, the data related to training and test is placed at following path in working directory
-##     training data - getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/train/
-##     test data -  getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/test/
+##     training data - project/train/
+##     test data -  project/test/
 
 
 ## Reading measurements of various training and test variables from X_train and X_test files using read.table()
 ## we are also providing the names to the variables using col.names attribute of read.table()
 ## with the column names as read above from features.txt
 
-X_train<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/train/X_train.txt",col.names = col_names)
-X_test<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/test/X_test.txt",col.names = col_names)
+X_train<-read.table("project/train/X_train.txt",col.names = col_names)
+X_test<-read.table("project/test/X_test.txt",col.names = col_names)
 
 ## Reading activities of training and test measurements from y_train and y_test files using read.table()
 ## we are also providing the names to the variables using col.names attribute of read.table()
 
-y_train<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/train/y_train.txt",col.names = "activity_no")
-y_test<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/test/y_test.txt",col.names = "activity_no")
+y_train<-read.table("project/train/y_train.txt",col.names = "activity_no")
+y_test<-read.table("project/test/y_test.txt",col.names = "activity_no")
 
 ## Reading subjects of training and test measurements from subject_train and subject_test files using read.table()
 ## we are also providing the names to the variables using col.names attribute of read.table()
 
-subject_train<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/train/subject_train.txt",col.names = "subject_id")
-subject_test<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/test/subject_test.txt",col.names = "subject_id")
+subject_train<-read.table("project/train/subject_train.txt",col.names = "subject_id")
+subject_test<-read.table("project/test/subject_test.txt",col.names = "subject_id")
 
 ## Binding together subject, activity and measurements of training and test data using cbind()
 
@@ -81,10 +81,14 @@ data_req<-select(merged_train_test_data,req_col_index)
 
 ## Step 3: Uses Descriptive Activity names to the activities in the merged data set
 
+
+## For this assignment, the activity_labels.txt file is placed at following path in working directory
+##     project/
+
 ##  Reading labels of activities from activity_labels.txt file using read.table()
 ##  we are also providing the names to the variables using col.names attribute of read.table()
 
-activity_labels<-read.table("getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset/activity_labels.txt",col.names = c("activity_no","activity_name"))
+activity_labels<-read.table("project/activity_labels.txt",col.names = c("activity_no","activity_name"))
 
 
 ## Adding descriptive activity names to activities in the above merged data set
@@ -135,8 +139,8 @@ tidy_data_set<-select(data_req,-activity_no)%>%
         summarise_each(funs(mean))
 
 
-write.table(tidy_data_set,file="Tidy_DataSet.txt",row.names = FALSE)
+write.table(tidy_data_set,file="project/Tidy_DataSet.txt",row.names = FALSE)
 
 ## To read the Tidy_DataSet.txt file created above into a variable tidy_data,
 ## use the below statement
-## tidy_data<-read.table("Tidy_DataSet.txt",header=TRUE,check.names=FALSE)
+## tidy_data_set<-read.table("project/Tidy_DataSet.txt",header=TRUE,check.names=FALSE)
