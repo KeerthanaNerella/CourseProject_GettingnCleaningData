@@ -70,6 +70,10 @@ req_col_index<-c(mean_col_index,std_col_index)
 
 req_col_index<-sort(req_col_index)
 
+## since activity_no and subject_id are first two columns,we increase the req_index by 2
+req_col_index<-req_col_index+2
+
+req_col_index<-c(1,2,req_col_index)
 ## Extracting data of only mean and standard deviation from each measurement using
 ## select() function of dplyr package
 
@@ -90,7 +94,10 @@ data_req<-merge(activity_labels,data_req,by.x="activity_no",by.y = "activity_no"
 ## Step 4: Labelling the data set with descriptive variable names
 
 ## retreiving names of the variables of extracted dataset
-col_names<-names(data_req)
+req_col_index<-req_col_index[3:length(req_col_index)]
+req_col_index<-req_col_index-2
+col_names<-col_names[req_col_index]
+col_names<-c("activity_no","activity_name","subject_id",col_names)
 
 ## Removing parenthesis from variable names
 col_names<-gsub("\\(\\)","",col_names)
@@ -132,4 +139,4 @@ write.table(tidy_data_set,file="Tidy_DataSet.txt",row.names = FALSE)
 
 ## To read the Tidy_DataSet.txt file created above into a variable tidy_data,
 ## use the below statement
-## tidy_data<-read.table("Tidy_DataSet.txt",header=TRUE)
+## tidy_data<-read.table("Tidy_DataSet.txt",header=TRUE,check.names=FALSE)
