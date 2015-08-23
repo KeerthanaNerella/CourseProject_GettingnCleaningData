@@ -1,4 +1,4 @@
-## Getting and Cleaning Data Course Project
+## Getting and Cleaning Data - Course Project
 ___
 
 This project is a part of 'Getting and Cleaning Data' course offered by John Hopkins University on Coursera.The objective being the demonstration of the ability to collect, and clean the data.
@@ -88,7 +88,7 @@ ___
 
 * The Tidy Data Set created as part of this project is a **Wide form** of data.
 * Wide form of data is chosen following the discussions at
-    1) [Tidy Data - Coursera Forum Discussion](https://class.coursera.org/getdata-031/forum/thread?thread_id=113),
+    1) [Tidy Data - Coursera Forum Discussion](https://class.coursera.org/getdata-031/forum/thread?thread_id=113#comment-976),
     2) [Detailed Project FAQ -Coursera Forum Discussion](https://class.coursera.org/getdata-031/forum/thread?thread_id=28),
     3) [Getting and Cleaning Data week3 - Coursera tutorial](https://class.coursera.org/getdata-031/lecture/37)
 

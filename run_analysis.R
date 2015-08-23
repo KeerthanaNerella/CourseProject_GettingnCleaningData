@@ -114,12 +114,14 @@ col_names<-gsub(",","_",col_names)
 ## as these variables are the readings obtained from Accelerometer and Gyroscope respectively
 ## Expanding 'Mag' in variable names to 'Magnitude' 
 ## Expanding 'std' in variable names to 'StandardDeviation' as std() stands for Standard Deviation
+## Replacing Repeated Ocuurence of 'Body' in column names to a single
 ## Reference: features_info.txt provided with the data
 
 col_names<-gsub("acc","Accelerometer",col_names,ignore.case = TRUE)
 col_names<-gsub("gyro","Gyroscope",col_names,ignore.case = TRUE)
 col_names<-gsub("Mag","Magnitude",col_names,ignore.case = TRUE)
 col_names<-gsub("_std","_StandaradDeviation",col_names,ignore.case = TRUE)
+col_names<-gsub("BodyBody","Body",col_names,ignore.case = TRUE)
 
 ## Assigning the descriptive variable names to the dataset
 
